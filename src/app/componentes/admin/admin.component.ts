@@ -79,6 +79,20 @@ export class AdminComponent implements OnInit {
       return 'Rol Desconocido';
     }
   }
+
+  resetPassword(username: string) {
+    // Ejemplo de implementación:
+    this.apiService.resetPassword(username).subscribe((response) => {
+      if (response.success) {
+        // Contraseña restablecida con éxito.
+        console.log('Contraseña restablecida con éxito.');
+      } else {
+        // Maneja cualquier error o respuesta de la API si el restablecimiento falla.
+        console.error('Error al restablecer la contraseña.');
+      }
+    });
+  }
+  
   
   
 }

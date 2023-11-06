@@ -12,8 +12,8 @@ $nombre = $request->nombre;
 $apellidos = $request->apellidos;
 $role = $request->role;
 
-// Hash de la contraseña
-$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+// Hash de la contraseña usando SHA-256
+$hashed_password = hash('sha256', $password);
 
 // Insertar el nuevo usuario en la base de datos
 $consulta = "INSERT INTO usuarios (username, password, nombre, apellidos, role) VALUES ('$username', '$hashed_password', '$nombre', '$apellidos', $role)";

@@ -13,8 +13,6 @@ export class AuthService {
   constructor(private router: Router, private apiService: ApiService) {}
 
   login(username: string, password: string): Observable<any> {
-    // Realiza una solicitud al backend para autenticar al usuario y obtener su rol.
-    // Asumiendo que tienes una API de autenticación en tu backend.
     const credentials = { username, password };
     
     // Llama al método `login` de `apiService` para realizar la solicitud al backend

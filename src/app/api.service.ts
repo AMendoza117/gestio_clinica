@@ -35,31 +35,37 @@ export class ApiService {
   login(username: string, password: string): Observable<any> {
     const credentials = { username, password };
 
-    const url = `${this.apiUrl}/api/login.php`; // Reemplaza con la ruta de tu API de inicio de sesión
+    const url = `${this.apiUrl}/api/login.php`; 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post(url, credentials, { headers });
   }
 
   loadUsers(): Observable<User[]> {
-    const url = `${this.apiUrl}/api/loadUsers.php`; // Reemplaza con la ruta de tu API para cargar usuarios
+    const url = `${this.apiUrl}/api/loadUsers.php`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.get<User[]>(url, { headers });
   }
 
   addUser(user: User): Observable<any> {
-    const url = `${this.apiUrl}/api/addUser.php`; // Reemplaza con la ruta de tu API para agregar usuarios
+    const url = `${this.apiUrl}/api/addUser.php`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post(url, user, { headers });
   }
 
   deleteUser(username: string): Observable<any> {
-    const url = `${this.apiUrl}/api/deleteUser.php`; // Reemplaza con la ruta de tu API para eliminar usuarios
+    const url = `${this.apiUrl}/api/deleteUser.php`; 
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { username };
+
+    return this.http.post(url, body, { headers });
+  }
+  resetPassword(username: string): Observable<any> {
+    const url = `${this.apiUrl}/api/resetPassword.php`; 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    // Si necesitas enviar algún parámetro en la solicitud, modifica el cuerpo de la solicitud aquí
     const body = { username };
 
     return this.http.post(url, body, { headers });
