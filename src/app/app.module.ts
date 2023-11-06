@@ -10,6 +10,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { AlmacenComponent } from './componentes/almacen/almacen.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './componentes/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     AlmacenComponent,
     NavComponent,
+    AdminComponent,
     
   ],
   imports: [

@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface User {
+    id: number;
+    username: string;
+    password: string;
+    nombre: string;
+    apellidos: string;
+    role: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,5 +41,28 @@ export class ApiService {
     return this.http.post(url, credentials, { headers });
   }
 
-  // Agrega más métodos según las necesidades de tu aplicación, como PUT, DELETE, etc.
+  loadUsers(): Observable<User[]> {
+    const url = `${this.apiUrl}/api/loadUsers.php`; // Reemplaza con la ruta de tu API para cargar usuarios
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.get<User[]>(url, { headers });
+  }
+
+  addUser(user: User): Observable<any> {
+    const url = `${this.apiUrl}/api/addUser.php`; // Reemplaza con la ruta de tu API para agregar usuarios
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(url, user, { headers });
+  }
+
+  deleteUser(username: string): Observable<any> {
+    const url = `${this.apiUrl}/api/deleteUser.php`; // Reemplaza con la ruta de tu API para eliminar usuarios
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    // Si necesitas enviar algún parámetro en la solicitud, modifica el cuerpo de la solicitud aquí
+    const body = { username };
+
+    return this.http.post(url, body, { headers });
+  }
+
 }

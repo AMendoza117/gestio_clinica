@@ -53,7 +53,7 @@ export class AuthService {
 
   getRedirectUrl() {
     if (this.userRole === 1) {
-      return '/almacen';
+      return '/admin';
     } else if (this.userRole === 2) {
       return '/almacen';
     } else {
